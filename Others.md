@@ -23,6 +23,13 @@ http://www.cyc2018.xyz/
 ### 其它算法
 * 169 Boyer-Moore Voting Algorithm https://blog.csdn.net/kimixuchen/article/details/52787307
 
+### 一题多解
+* 130
+* 240
+* 377
+* 378
+* 684
+
 ### 其它
 * 检查时间复杂度和空间复杂度
 
