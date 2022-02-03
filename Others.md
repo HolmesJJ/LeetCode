@@ -12,10 +12,10 @@ http://www.cyc2018.xyz/
 * 哈希表
 * 字符串 
 * 数组与矩阵
-
-#### 待完成
 * 贪心思想
 * 分治
+
+#### 待完成
 * 动态规划
 * 数学
 * 位运算
@@ -24,8 +24,10 @@ http://www.cyc2018.xyz/
 * 169 Boyer-Moore Voting Algorithm https://blog.csdn.net/kimixuchen/article/details/52787307
 
 ### 一题多解
+* 53
 * 130
 * 240
+* 241
 * 377
 * 378
 * 684
