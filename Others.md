@@ -14,11 +14,11 @@ http://www.cyc2018.xyz/
 * 数组与矩阵
 * 贪心思想
 * 分治
+* 位运算
 
 #### 待完成
 * 动态规划
 * 数学
-* 位运算
 
 ### 其它算法
 * 169 Boyer-Moore Voting Algorithm https://blog.csdn.net/kimixuchen/article/details/52787307
@@ -29,6 +29,7 @@ http://www.cyc2018.xyz/
 * 130
 * 240
 * 241
+* 338
 * 377
 * 378
 * 684
