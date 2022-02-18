@@ -15,10 +15,10 @@ http://www.cyc2018.xyz/
 * 贪心思想
 * 分治
 * 位运算
+* 数学
 
 #### 待完成
 * 动态规划
-* 数学
 
 ### 其它算法
 * 169 Boyer-Moore Voting Algorithm https://blog.csdn.net/kimixuchen/article/details/52787307
