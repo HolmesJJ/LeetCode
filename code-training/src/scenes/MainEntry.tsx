@@ -4,6 +4,9 @@
  * @file Entry point for Main Scene
  */
 
+import { useMainEntry as useStyles } from 'styles/main';
+
 export function MainEntry() {
-  return <div>Main</div>;
+  const styles = useStyles();
+  return <div className={styles.container}>Main</div>;
 }
