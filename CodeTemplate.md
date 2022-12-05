@@ -1,17 +1,31 @@
 ## 二分查找
 
 ### 使用条件
+
+[练习一下](https://holmesjj.github.io/code-training/#/mrq/binarySearch)
+
+<details>
+<summary>显示答案</summary>
+
 * 排序数组(30-40%是二分)
 * 当面试官要求你找一个比O(n)更小的时间复杂度算法的时候(99%)
 * 找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)
 * 找到一个最大/最小的值使得某个条件被满足(90%)
+
+</details>
 
 ### 典型例题
 * [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 * 矩阵二分查找 [74. Search a 2D Matrix](74.%20Search%20a%202D%20Matrix.md)
 * 二叉树与二分查找的结合 [222. Count Complete Tree Nodes](222.%20Count%20Complete%20Tree%20Nodes.md)
 
-### 非递归版
+### 非递归版代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/binarySearchIteration)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 // Corner Case 处理
 if (nums == null || nums.length == 0) {
@@ -44,7 +58,15 @@ if (pos == nums.length || nums[pos] > target) {
 }
 ```
 
-### 递归版
+</details>
+
+### 递归版代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/BinarySearchRecursion)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 // Corner Case 处理
 if (nums == null || nums.length == 0) {
@@ -75,9 +97,16 @@ if (pos == nums.length || nums[pos] > target) {
 }
 ```
 
+</details>
+
 ### 复杂度
+<details>
+<summary>显示答案</summary>
+
 * 时间复杂度：O(logn)
 * 空间复杂度：O(1)
+
+</details>
 
 ## 二叉树
 * 深度Depth从上到下，root的深度为0
@@ -92,13 +121,27 @@ if (pos == nums.length || nums[pos] > target) {
 * 深入理解BFS的特性，图与层次遍历的结合 [934. Shortest Bridge](934.%20Shortest%20Bridge.md)
 
 ### 使用条件
+
+[练习一下](https://holmesjj.github.io/code-training/#/mrq/bfs)
+
+<details>
+<summary>显示答案</summary>
+
 * 拓扑排序(100%)
 * 出现连通块的关键词(100%)
 * 分层遍历(100%)
 * 简单图最短路径(100%)
 * 给定一个变换规则，从初始状态变到终止状态最少几步(100%)
 
-### 图
+</details>
+
+### 代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/BFS)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 // 返回类型根据题目要求决定
 public void bfs(char[][] grid) {
@@ -146,7 +189,15 @@ public void bfs(char[][] grid) {
 }
 ```
 
-### 树的层次遍历
+</details>
+
+### 树的层次遍历代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/levelOrder)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 public List<List<Integer>> levelOrder(TreeNode root) {
     List<List<Integer>> levels = new ArrayList<>();
@@ -179,13 +230,27 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 }
 ```
 
+</details>
+
 ### 复杂度
+
+<details>
+<summary>显示答案</summary>
+
 * 时间复杂度：O(E + V)
 * 空间复杂度：O(V)
+
+</details>
 
 ## 深度优先遍历(DFS)
 
 ### 使用条件
+
+[练习一下](https://holmesjj.github.io/code-training/#/mrq/dfs)
+
+<details>
+<summary>显示答案</summary>
+
 * BFS不能解决的问题，否则很容易超时
 * 找满足某个条件的所有方案(99%)
 * 二叉树Binary Tree的问题(90%)
@@ -196,7 +261,15 @@ public List<List<Integer>> levelOrder(TreeNode root) {
     * 问题模型：求出所有满足条件的"排列"
     * 判断条件：组合中的元素是顺序"相关"的
 
-### 图
+</details>
+
+### 代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/dfs)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 // 返回类型根据题目要求决定
 public void dfs(char[][] grid) {
@@ -254,17 +327,39 @@ public void dfs(char[][] grid) {
 }
 ```
 
+</details>
+
 ### 复杂度
+
+<details>
+<summary>显示答案</summary>
+
 * 时间复杂度：O(E + V)
 * 空间复杂度：O(V)
+
+</details>
 
 ## 迪杰斯特拉(Dijkstra's)
 
 ### 使用条件
+
+[练习一下](https://holmesjj.github.io/code-training/#/mrq/dijkstra)
+
+<details>
+<summary>显示答案</summary>
+
 * 最短路径问题(100%)
 * 不存在负边权
 
-### 图
+</details>
+
+### 代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/dijkstra)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 // 返回类型根据题目要求决定
 public void dijkstra(char[][] grid) {
@@ -355,18 +450,41 @@ public void dijkstra(char[][] grid) {
 }
 ```
 
+</details>
+
 ### 复杂度
+
+<details>
+<summary>显示答案</summary>
+
 * 时间复杂度：O(E + VlogV)
 * 空间复杂度：O(V)
+
+</details>
 
 ## 回溯
 
 ### 使用条件
+
+[练习一下](https://holmesjj.github.io/code-training/#/mrq/backtracking)
+
+<details>
+<summary>显示答案</summary>
+
 * 排列(100%)
 * 组合(100%)
 * 切割(100%)
 * 子集(100%)
 * 棋盘(100%)
+
+</details>
+
+### 代码
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/backtracking)
+
+<details>
+<summary>显示答案</summary>
 
 ```java
 // results是最终结果
@@ -392,14 +510,27 @@ public void backtracking(List<List<Integer>> results, List<Integer> result /* �
 }
 ```
 
+</details>
+
 ### 复杂度
+
+<details>
+<summary>显示答案</summary>
+
 * 时间复杂度：
     * Hamiltonian Cycle：O(n!)
     * WordBreak and StringSegment：O(2^n)
     * NQueens：O(n!)
 * 空间复杂度：O(n)
 
+</details>
+
 ## `List`和`Array`
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/listArray)
+
+<details>
+<summary>显示答案</summary>
 
 ### `List<Integer>` to `int[]`
 ```java
@@ -416,7 +547,14 @@ Collections.reverse(list);
 Collections.reverse(Arrays.asList(arr));
 ```
 
+</details>
+
 ## `HashMap`
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/hashMap)
+
+<details>
+<summary>显示答案</summary>
 
 ### 遍历
 ```java
@@ -433,14 +571,29 @@ for (int i = 0; i < nums.length; i++) {
 }
 ```
 
+</details>
+
 ## `HashMap`和`List`
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/hashMapList)
+
+<details>
+<summary>显示答案</summary>
 
 ### `HashMap<String, String>` to `List<String>`
 ```java
 List<String> list = new ArrayList<>(map.values());
 ```
 
+</details>
+
 ## `Math`
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/math)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 Math.abs(x)     // 绝对值
 Math.pow(x, y)  // x^y，返回double
@@ -448,14 +601,29 @@ Math.max(x, y)  // 返回较大值
 Math.min(x, y)  // 返回较小值
 ```
 
+</details>
+
 ## 其它
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/lengthOfN)
+
+<details>
+<summary>显示答案</summary>
 
 ### n的长度
 ```java
 int l = (int) (Math.log10(n) + 1);
 ```
 
+</details>
+
 ### 多层循环break的使用
+
+[练习一下](https://holmesjj.github.io/code-training/#/code/breakInNestedLoops)
+
+<details>
+<summary>显示答案</summary>
+
 ```java
 stop:
 for (int i = 0; i < m; i++) {
@@ -467,6 +635,8 @@ for (int i = 0; i < m; i++) {
     }
 }
 ```
+
+</details>
 
 ## 贪心算法
 局部最优 => 全局最优
