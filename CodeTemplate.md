@@ -15,6 +15,7 @@
 </details>
 
 ### 典型例题
+
 * [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 * 矩阵二分查找 [74. Search a 2D Matrix](74.%20Search%20a%202D%20Matrix.md)
 * 二叉树与二分查找的结合 [222. Count Complete Tree Nodes](222.%20Count%20Complete%20Tree%20Nodes.md)
@@ -100,6 +101,7 @@ if (pos == nums.length || nums[pos] > target) {
 </details>
 
 ### 复杂度
+
 <details>
 <summary>显示答案</summary>
 
@@ -540,6 +542,7 @@ int[] array = list.stream().mapToInt(Integer::intValue).toArray();
 ```
 
 ### 反转
+
 ```java
 // List
 Collections.reverse(list);
@@ -557,6 +560,7 @@ Collections.reverse(Arrays.asList(arr));
 <summary>显示答案</summary>
 
 ### 遍历
+
 ```java
 for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
     int key = entry.getKey();
@@ -565,6 +569,7 @@ for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 ```
 
 ### 记录元素出现的次数
+
 ```java
 for (int i = 0; i < nums.length; i++) {
     map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
@@ -639,8 +644,10 @@ for (int i = 0; i < m; i++) {
 </details>
 
 ## 贪心算法
+
 局部最优 => 全局最优
 
 ## ToDo
+
 * `TreeMap`和`HashMap`的遍历和排序
 * 非递归Tree遍历
