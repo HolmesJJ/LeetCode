@@ -45,10 +45,14 @@ class Solution {
                     int nj = j + dirs[dir][1];
                     // 在grid中
                     if (ni >= 0 && ni < m && nj >= 0 && nj < n && grid[ni][nj] == 1) {
-                        qn.add(new int[]{ni, nj});
-                        // 结点被访问
-                        visited[ni][nj] = true;
-                        grid[ni][nj] = 2;
+                        // 排除已经访问过的结点
+                        // 把符合条件的结点入队
+                        if (visited[ni][nj] == false /* && 其它条件 */) {
+                            qn.add(new int[]{ni, nj});
+                            // 结点被访问
+                            visited[ni][nj] = true;
+                            grid[ni][nj] = 2;
+                        }
                     }
                 }
             }
