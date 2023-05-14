@@ -33,6 +33,7 @@ class Solution {
                 int[] node = qn.poll();
                 int i = node[0];
                 int j = node[1];
+                // 只要遇到终点就停止
                 if (i == m - 1 && j == n - 1) {
                     qn.clear();
                     break;
