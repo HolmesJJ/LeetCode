@@ -1,18 +1,26 @@
 class Solution {
     public int findMin(int[] nums) {
-        int index = binarySearch(nums, 0, nums.length - 1);
-        return nums[index];
+        int pos = binarySearch(nums);
+        return nums[pos];
     }
-    
-    public int binarySearch(int[] nums, int low, int high) {
-        if (low > high) {
-            return low;
+
+    public int binarySearch(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid - 1] > nums[mid]) {
+                return mid;
+            } else if (nums[mid] > nums[nums.length - 1]) {
+                start = mid;
+            } else {
+                end = mid;
+            }
         }
-        int mid = low + (high - low) / 2;
-        if (nums[mid] >= nums[0] && nums[mid] > nums[nums.length - 1]) {
-            return binarySearch(nums, mid + 1, high);
+        if (nums[start] > nums[end]) {
+            return end;
         } else {
-            return binarySearch(nums, low, mid - 1);
+            return start;
         }
     }
 }
