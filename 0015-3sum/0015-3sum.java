@@ -1,19 +1,28 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        Map<String, List<Integer>> map = new HashMap<>();
+        List<List<Integer>> results = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             int target = -nums[i];
             int left = i + 1;
             int right = nums.length - 1;
             while (left < right) {
+                if (i > 0 && nums[i] == nums[i - 1]) {
+                    left++;
+                    continue;
+                }
                 if (nums[left] + nums[right] == target) {
                     List<Integer> result = new ArrayList<>();
                     result.add(nums[i]);
                     result.add(nums[left]);
                     result.add(nums[right]);
-                    Collections.sort(result);
-                    map.put("" + result.get(0) + result.get(1) + result.get(2), result);
+                    results.add(result);
+                    while (left < right && nums[left] == nums[left + 1]) {
+                        left++;
+                    }
+                    while (left < right && nums[right - 1] == nums[right]) {
+                        right--;
+                    }
                     left++;
                 } else if (nums[left] + nums[right] > target) {
                     right--;
@@ -22,10 +31,8 @@ class Solution {
                 }
             }
         }
-        List<List<Integer>> results = new ArrayList<>();
-        for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
-            results.add(entry.getValue());
-        }
         return results;
     }
 }
+
+// -4, -1, -1, 0, 1, 2
