@@ -6,11 +6,11 @@ class Solution {
             int target = -nums[i];
             int left = i + 1;
             int right = nums.length - 1;
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                left++;
+                continue;
+            }
             while (left < right) {
-                if (i > 0 && nums[i] == nums[i - 1]) {
-                    left++;
-                    continue;
-                }
                 if (nums[left] + nums[right] == target) {
                     List<Integer> result = new ArrayList<>();
                     result.add(nums[i]);
@@ -35,4 +35,4 @@ class Solution {
     }
 }
 
-// -4, -1, -1, 0, 1, 2
+// -4 -1 -1 0 1 2
