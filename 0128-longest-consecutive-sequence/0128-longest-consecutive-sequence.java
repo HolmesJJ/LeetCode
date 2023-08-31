@@ -8,7 +8,6 @@ class Solution {
         int maxCount = 0;
         for (int i = 0; i < nums.length; i++) {
             if (searchedSet.contains(nums[i])) {
-                System.out.println(nums[i]);
                 continue;
             }
             int upCount = 0;
