@@ -1,0 +1,91 @@
+class Solution {
+    public List<List<Integer>> pacificAtlantic(int[][] heights) {
+        int m = heights.length;
+        int n = heights[0].length;
+        // 4个方向
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        
+        boolean[][] visited = new boolean[m][n];
+        
+        List<List<Integer>> results = new ArrayList<>();
+        
+        // 扫描每一个点，看是否都能流向太平洋和大西洋
+        for (int a = 0; a < m; a++) {
+            for (int b = 0; b < n; b++) {
+                
+                // 能否流去太平洋
+                boolean isToPacificOcean = false;
+                // 能否流去大西洋
+                boolean isToAtlanticOcean = false;
+
+                for (int k = 0; k < visited.length; k++) {
+                    Arrays.fill(visited[k], false);
+                }
+                
+                // 若能流去太平洋
+                if (a == 0 || b == 0) {
+                    isToPacificOcean = true;
+                }
+                // 若能流去大西洋
+                if (a == m - 1 || b == n - 1) {
+                    isToAtlanticOcean = true;
+                }
+                if (isToPacificOcean == true && isToAtlanticOcean == true) {
+                    List<Integer> result = new ArrayList<>();
+                    result.add(a);
+                    result.add(b);
+                    results.add(result);
+                    continue;
+                }
+
+                // 栈记录结点的坐标(i, j)
+                Stack<int[]> sn = new Stack<>();
+                
+                sn.add(new int[]{a, b});
+                visited[a][b] = true; // 标记以访问
+                // DFS遍历整个Graph，访问过的结点会被存在visited中
+                dfs:
+                while (!sn.isEmpty()) {
+                    int[] node = sn.peek();
+                    int i = node[0];
+                    int j = node[1];
+                    boolean isAllVisited = true;
+                    
+                    // 4个方向的相邻结点
+                    for (int dir = 0; dir < dirs.length; dir++) {
+                        int ni = i + dirs[dir][0];
+                        int nj = j + dirs[dir][1];
+                        if (ni >= 0 && ni < m && nj >= 0 && nj < n && heights[ni][nj] <= heights[i][j]) {
+                            // 若能流去太平洋
+                            if (ni == 0 || nj == 0) {
+                                isToPacificOcean = true;
+                            }
+                            // 若能流去大西洋
+                            if (ni == m - 1 || nj == n - 1) {
+                                isToAtlanticOcean = true;
+                            }
+                            if (isToPacificOcean == true && isToAtlanticOcean == true) {
+                                List<Integer> result = new ArrayList<>();
+                                result.add(a);
+                                result.add(b);
+                                results.add(result);
+                                break dfs;
+                            }
+                            if (visited[ni][nj] == false) {
+                                isAllVisited = false;
+                                sn.add(new int[]{ni, nj});
+                                visited[ni][nj] = true; // 标记以访问
+                            }
+                        }
+                    }
+                    
+                    if (isAllVisited) {
+                        sn.pop();
+                    }
+                }
+            }
+        }
+        
+        return results;
+    }
+}
