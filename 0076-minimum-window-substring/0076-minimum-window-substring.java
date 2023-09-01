@@ -46,7 +46,6 @@ class Solution {
                 }
                 windowSize = right - left + 1;
                 if (isValid && windowSize < minWindowSize) {
-                    System.out.println(s.substring(left, left + windowSize));
                     start = left;
                     minWindowSize = windowSize;
                 }
