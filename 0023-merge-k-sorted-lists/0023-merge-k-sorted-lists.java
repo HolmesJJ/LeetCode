@@ -10,21 +10,11 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        return partion(lists, 0, lists.length - 1);
-    }
-
-    public ListNode partion(ListNode[] lists, int left, int right) {
-        if (left == right) {
-            return lists[left];
+        ListNode dummy = new ListNode();
+        for (int i = 0; i < lists.length; i++) {
+            dummy.next = merge(dummy.next, lists[i]);
         }
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-            ListNode l1 = partion(lists, left, mid);
-            ListNode l2 = partion(lists, mid + 1, right);
-            return merge(l1, l2);
-        } else {
-            return null;
-        }
+        return dummy.next;
     }
 
     public ListNode merge(ListNode l1, ListNode l2) {
