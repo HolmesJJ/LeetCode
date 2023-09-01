@@ -1,0 +1,53 @@
+class Solution {
+    public boolean exist(char[][] board, String word) {
+        int m = board.length;
+        int n = board[0].length;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (word.charAt(0) == board[i][j]) {
+                    boolean[][] visited = new boolean[m][n];
+                    visited[i][j] = true;
+                    boolean isExist = backtracking(board, m, n, word, word.length(), visited, i, j, 0);
+                    if (isExist) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    // i和j：记录当前字母在board的位置
+    // li和lj：记录上一个字母在board的位置
+    public boolean backtracking(char[][] board, int m, int n, String word, int len, boolean[][] visited, int i, int j, int pos) {
+        boolean isExist = false;
+        if (pos == len - 1) {
+            isExist = true;
+            return isExist;
+        }
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        
+        // 遍历集合元素：四个方向
+        for (int dir = 0; dir < dirs.length; dir++) {
+            // 下一个字母的位置
+            int ni = i + dirs[dir][0];
+            int nj = j + dirs[dir][1];
+            // 处理结点
+            if (ni >= 0 && ni < m && nj >= 0 && nj < n && visited[ni][nj] == false) {
+                char nextChar = word.charAt(pos + 1);
+                if (nextChar == board[ni][nj]) {
+                    visited[ni][nj] = true;
+                    pos++;
+                    isExist = backtracking(board, m, n, word, len, visited, ni, nj, pos);
+                    if (isExist) {
+                        break;
+                    }
+                    // 回溯操作
+                    pos--;
+                    visited[ni][nj] = false;
+                }
+            }
+        }
+        return isExist;
+    }
+}
