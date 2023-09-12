@@ -5,20 +5,15 @@ class Solution {
         }
         int left = 0;
         int curr = 1;
-        while (left < nums.length - 1) {
-            if (nums[left] == nums[curr] && Math.abs(left - curr) <= k) {
-                return true;
+        Set<Integer> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++) {
+            if (i > k) {
+                set.remove(nums[i - k - 1]);
             }
-            if (nums[left] != nums[curr] && Math.abs(left - curr) <= k) {
-                if (curr < nums.length - 1) {
-                    curr++;
-                } else {
-                    left++;
-                    curr = left + 1;
-                }
+            if (set.contains(nums[i])) {
+                return true;
             } else {
-                left++;
-                curr = left + 1;
+                set.add(nums[i]);
             }
         }
         return false;
