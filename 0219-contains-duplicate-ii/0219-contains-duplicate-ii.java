@@ -3,8 +3,6 @@ class Solution {
         if (k == 0 || nums.length == 1) {
             return false;
         }
-        int left = 0;
-        int curr = 1;
         Set<Integer> set = new HashSet<>();
         for(int i = 0; i < nums.length; i++) {
             if (i > k) {
