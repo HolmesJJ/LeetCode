@@ -1,30 +1,26 @@
 class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> permutations = new ArrayList<>();
-        List<Integer> permutation = new ArrayList<>();
-        boolean[] visited = new boolean[nums.length];
-        backtracking(permutations, permutation, nums, visited);
-        return permutations;
-    }
+    public List<List<Integer>> results = new ArrayList<>();
     
-    public void backtracking(List<List<Integer>> permutations, List<Integer> permutation, int[] nums, boolean[] visited) {
-        // 收集结果，需要创建一个新的对象
-        if (permutation.size() == nums.length) {
-            permutations.add(new ArrayList<>(permutation));
+    public List<List<Integer>> permute(int[] nums) {
+        boolean[] visited = new boolean[nums.length];
+        backtracking(nums, visited, new ArrayList<>());
+        return results;
+    }
+
+    public void backtracking(int[] nums, boolean[] visited, List<Integer> result) {
+        if (result.size() == nums.length) {
+            results.add(new ArrayList<>(result));
             return;
         }
-        
-        // 遍历集合元素
         for (int i = 0; i < nums.length; i++) {
-            if (visited[i] == false) {
-                visited[i] = true;
-                // 处理结点
-                permutation.add(nums[i]);
-                backtracking(permutations, permutation, nums, visited);
-                // 回溯操作
-                permutation.remove(permutation.size() - 1);
-                visited[i] = false;
+            if (visited[i]) {
+                continue;
             }
+            result.add(nums[i]);
+            visited[i] = true;
+            backtracking(nums, visited, result);
+            result.remove(result.size() - 1);
+            visited[i] = false;
         }
     }
 }
