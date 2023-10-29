@@ -1,9 +1,8 @@
 class Solution {
     public List<List<Integer>> results = new ArrayList<>();
-    public List<Integer> result = new ArrayList<>();
     
     public List<List<Integer>> subsets(int[] nums) {
-        backtracking(nums, result, 0);
+        backtracking(nums, new ArrayList<>(), 0);
         return results;
     }
     
