@@ -20,7 +20,7 @@ class Solution {
     }
     
     public void backtracking(char[][] board, boolean[][] visited, int x, int y, String result, String word) {
-        if (result.equals(word)) {
+        if (result.length() == word.length() && result.equals(word)) {
             isWord = true;
             return;
         }
