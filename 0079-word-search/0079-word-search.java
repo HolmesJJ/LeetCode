@@ -10,6 +10,9 @@ class Solution {
                     boolean[][] visited = new boolean[m][n];
                     visited[i][j] = true;
                     backtracking(board, visited, i, j, board[i][j] + "", word);
+                    if (isWord) {
+                        return true;
+                    }
                 }
             }
         }
