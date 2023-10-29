@@ -9,8 +9,6 @@ class Solution {
     public void backtracking(int n, int k, int start, List<Integer> result) {
         if (result.size() == k) {
             results.add(new ArrayList<>(result));
-        }
-        if (result.size() > k) {
             return;
         }
         for (int i = start; i <= n; i++) {
