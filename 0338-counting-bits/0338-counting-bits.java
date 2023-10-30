@@ -2,25 +2,13 @@ class Solution {
     public int[] countBits(int n) {
         int[] f = new int[n + 1];
         f[0] = 0;
-        int i = 1;
-        int j = 0;
-        int max = 1;
-        while (i <= n) {
-            if (i == max) {
-                max = max * 2;
-                j = 0;
+        int offset = 1;
+        for (int i = 1; i <= n; i++) {
+            if (offset * 2 == i) {
+                offset = i;
             }
-            f[i] = f[j] + 1;
-            i++;
-            j++;
+            f[i] = f[i - offset] + 1;
         }
         return f;
     }
 }
-
-// 0 00   0
-// 1 01   1
-// 2 10   1
-// 3 11   2
-// 4 100  3
-// 5 101  3
