@@ -5,6 +5,7 @@ class Solution {
         }
         int min = nums[0];
         Stack<int[]> stack = new Stack<>();
+        stack.push(new int[]{nums[0], min});
         for (int i = 1; i < nums.length; i++) {
             while (!stack.isEmpty()) {
                 int[] top = stack.peek();
