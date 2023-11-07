@@ -25,8 +25,6 @@ class UndergroundSystem {
     
     public double getAverageTime(String startStation, String endStation) {
         List<String> route = Arrays.asList(startStation, endStation);
-        System.out.println(startStation + ", " + endStation);
-        System.out.println(totalMap.get(route));
         List<Integer> value = totalMap.get(route);
         return value.get(0) * 1.0 / value.get(1);
     }
