@@ -1,45 +1,53 @@
 class Solution {
 public:
-    long long minimumFuelCost(std::vector<std::vector<int>>& roads, int seats) {
+    long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
         int n = roads.size() + 1;
-        std::vector<std::vector<int>> graph(n);
+        vector<vector<int>> graph(n);
         for (auto& road : roads) {
             graph[road[0]].push_back(road[1]);
             graph[road[1]].push_back(road[0]);
         }
         
         long long res = 0;
-        std::vector<int> passengerCount(n, 0);
-        std::set<int> visited;
-        std::stack<std::pair<int, bool>> s; // Pair of node and a flag indicating if children are processed
+        vector<int> passengerCount(n, 0);
 
-        s.push({0, false}); // Start with the capital city
+        set<int> visited;
+        // Pair of node and a flag indicating if children are processed
+        stack<pair<int, bool>> s;
+
+        // Start with the capital city
+        s.push({0, false});
         visited.insert(0);
         while (!s.empty()) {
             int node = s.top().first;
-            bool childrenProcessed = s.top().second;
+            bool isProcessed = s.top().second;
             s.pop();
+            vector<int> nNodes = graph[node];
             
-            if (!childrenProcessed) {
-                // First time this node is being processed, push it back onto the stack to process after all children
+            // First time this node is being processed, push it back onto the stack to process after all children
+            if (!isProcessed) {
+                // 精髓
                 s.push({node, true});
-                for (auto& child : graph[node]) {
-                    if (visited.find(child) == visited.end()) {
-                        s.push({child, false});
-                        visited.insert(child);
+                for (auto& nNode : nNodes) {
+                    if (visited.find(nNode) == visited.end()) {
+                        s.push({nNode, false});
+                        visited.insert(nNode);
                     }
                 }
-            } else {
-                // All children of this node have been processed, calculate passengers and fuel cost
-                int passengers = 1; // Include self
-                for (auto& child : graph[node]) {
-                    passengers += passengerCount[child]; // Sum up the passengers from children
+            }
+            // All children of this node have been processed, calculate passengers and fuel cost
+            else {
+                // Include self
+                int passengers = 1;
+                for (auto& nNode : nNodes) {
+                    // Sum up the passengers from children
+                    passengers += passengerCount[nNode];
                 }
-                passengerCount[node] = passengers; // Update the passenger count for the current node
-                
+                // Update the passenger count for the current node
+                passengerCount[node] = passengers;
                 // If it's not the capital city (which doesn't have a parent), calculate the fuel cost
                 if (node != 0) {
-                    res += std::ceil(static_cast<double>(passengers) / seats);
+                    res += ceil(static_cast<double>(passengers) / seats);
                 }
             }
         }
