@@ -27,14 +27,8 @@ public:
                 if (probs[u] * vProb > probs[v]) {
                     probs[v] = probs[u] * vProb;
                     pq.push({probs[v], v});
-                    cout << v << " " << vProb << endl;
                 }
             }
-            cout << "===" << endl;
-        }
-        
-        for (auto& p : probs) {
-            cout << p << endl;
         }
         
         return 0;
