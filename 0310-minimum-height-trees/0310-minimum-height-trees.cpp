@@ -12,12 +12,10 @@ public:
             degrees[edges[i][0]]++;
             degrees[edges[i][1]]++;
         }
-        vector<bool> visited(n, false);
         queue<int> q;
         for (int i = 0; i < n; ++i) {
             if (degrees[i] == 1) {
                 q.push(i);
-                visited[i] = true;
             }
         }
         int numNodes = n;
@@ -30,12 +28,9 @@ public:
                 degrees[node]--;
                 for (auto newNode : adj[node]) {
                     degrees[newNode]--;
-                }
-            }
-            for (int i = 0; i < n; i++) {
-                if (degrees[i] <= 1 && !visited[i]) {
-                    q.push(i);
-                    visited[i] = true;
+                    if (degrees[newNode] == 1) {
+                        q.push(newNode);
+                    }
                 }
             }
         }
