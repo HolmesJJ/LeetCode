@@ -11,7 +11,6 @@ public:
                 high = mid - 1;
             }
         }
-        cout << low << endl;
         vector<int> results;
         int left = low - 1;
         int right = low;
