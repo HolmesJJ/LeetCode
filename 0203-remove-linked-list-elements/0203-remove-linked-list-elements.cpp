@@ -18,7 +18,6 @@ public:
         ListNode* curr = head;
         while (curr != nullptr) {
             if (curr->val == val) {
-                cout << curr->val << endl;
                 prev->next = curr->next;
             } else {
                 prev = prev->next;
